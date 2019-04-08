@@ -190,8 +190,7 @@ public class AVLUsuarios {
         }
         return nodo;
     }
-    
-    
+
     //Recorrido inorden del arbol
     public void recorridoIn(nodoAVL raiz) {
         if (raiz.izquiera != null) {
@@ -205,8 +204,8 @@ public class AVLUsuarios {
         }
 
     }
-    
-     String textoDot1;
+
+    String textoDot1;
 
     public String recorrerAVL(nodoAVL raiz) {
         String textoDOT = "";
@@ -226,7 +225,7 @@ public class AVLUsuarios {
                 textoDOT = textoDOT + "\"" + raizS + "\":f0->\"" + ramasS + "\":f1;";
             }
             String raizS = raiz.codigo;
-            textoDOT = textoDOT + raizS + "[label=\"<f0>|<f1>" + "ID: " + raizS + "\\n Nombre: " + raiz.nombre   + "\\n factoe: " + Integer.toString(raiz.fe) + "|<f2>\"];\n";
+            textoDOT = textoDOT + raizS + "[label=\"<f0>|<f1>" + "ID: " + raizS + "\\n Nombre: " + raiz.nombre + "\\n factoe: " + Integer.toString(raiz.fe) + "|<f2>\"];\n";
 
             if (raiz.derecha != null) {
                 String raizS1 = raiz.codigo;
@@ -237,12 +236,12 @@ public class AVLUsuarios {
             }
 
         }
-        textoDot1= textoDOT;
+        textoDot1 = textoDOT;
         //System.out.println(textoDOT);
         return textoDOT;
     }
-    
-    public void hacerGra() throws IOException, InterruptedException{
+
+    public void hacerGra() throws IOException, InterruptedException {
         recorrerAVL(raiz);
         graficarAVL(textoDot1);
     }
@@ -261,38 +260,95 @@ public class AVLUsuarios {
         fs.println("\tsubgraph clusterLOG {\n");
         fs.println("label = \"USUARIOS\";\n");
         fs.println("nodesep=.05;");
-        fs.println("node [shape=record,width=.1,height=.1];");  
+        fs.println("node [shape=record,width=.1,height=.1];");
         fs.println(textoDot1);
         fs.println("\t}\n");
 
         fs.println("}");
-        
-        
 
         fs.close();
-        
+
         String path = "C:\\Program Files (x86)\\Graphviz2.38\\bin\\dot.exe";
-        String fileInput= "./arbol.dot";
-        String fileOutPut = System.getProperty("user.dir")+"\\arbol.png";
+        String fileInput = "./arbol.dot";
+        String fileOutPut = System.getProperty("user.dir") + "\\arbol.png";
         String tParam = "-Tpng";
         String tOparam = "-o";
-        
-        String []cmd = new String[5];
+
+        String[] cmd = new String[5];
         cmd[0] = path;
         cmd[1] = tParam;
         cmd[2] = fileInput;
-        cmd[3]= tOparam;
-        cmd[4]= fileOutPut;
-        
+        cmd[3] = tOparam;
+        cmd[4] = fileOutPut;
+
         Runtime rt = Runtime.getRuntime();
-        Process p =rt.exec(cmd);
+        Process p = rt.exec(cmd);
         p.waitFor();
         p.destroy();
-        
 
-        
     }
-    
-    
-}
 
+    public void Eliminar(String nick) {
+        raiz = EliminarNodo(raiz, nick);
+        cantidad--;
+    }
+
+    private nodoAVL EliminarNodo(nodoAVL nodo, String nick) {
+        if (nodo == null) {
+            return null;
+        } else {
+            String nickNodo;
+            if (nodo.usuario == null) {
+                nickNodo = nodo.codigo;
+            } else {
+                nickNodo = nodo.usuario.codigo;
+            }
+
+            if (nick.compareTo(nickNodo) < 0) {
+                nodo.izquiera = EliminarNodo(nodo.izquiera, nick);
+            } else if (nick.compareTo(nickNodo) > 0) {
+                nodo.derecha = EliminarNodo(nodo.derecha, nick);
+            } else {//Nodo es el contacto a eliminar
+                if (nodo.izquiera == null) {
+                    nodo.usuario = null;
+                    return nodo.derecha;
+                } else if (nodo.derecha == null) {
+                    nodo.usuario = null;
+                    return nodo.izquiera;
+                } else {
+                    if (nodo.izquiera.altura > nodo.derecha.altura) {
+                        nodoAVL sucesor = GetSucesorDerecha(nodo.izquiera);
+                        nodo.codigo = sucesor.codigo;
+                        nodo.nombre = sucesor.nombre;
+
+                        nodo.izquiera = EliminarNodo(nodo.izquiera, sucesor.codigo);
+                    } else {
+                        nodoAVL sucesor = GetSucesorIzquierda(nodo.derecha);
+                        nodo.codigo = sucesor.codigo;
+                        nodo.nombre = sucesor.nombre;
+
+                        nodo.derecha = EliminarNodo(nodo.derecha, sucesor.codigo);
+                    }
+                }
+            }
+        }
+
+        Actualizar(nodo);
+        return Balancear(nodo);
+    }
+
+    private nodoAVL GetSucesorIzquierda(nodoAVL nodo) {
+        while (nodo.izquiera != null) {
+            nodo = nodo.izquiera;
+        }
+        return nodo;
+    }
+
+    private nodoAVL GetSucesorDerecha(nodoAVL nodo) {
+        while (nodo.derecha != null) {
+            nodo = nodo.derecha;
+        }
+        return nodo;
+    }
+
+}

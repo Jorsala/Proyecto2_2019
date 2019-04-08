@@ -9,10 +9,9 @@ node [shape=record,width=.1,height=.1];
 AX000[label="<f0>|<f1>ID: AX000\n Nombre: Juan\n factoe: 0|<f2>"];
 "AX001":f0->"AX000":f1;AX001[label="<f0>|<f1>ID: AX001\n Nombre: Juan\n factoe: 0|<f2>"];
 AX101[label="<f0>|<f1>ID: AX101\n Nombre: Juan\n factoe: 0|<f2>"];
-"AX001":f2->"AX101":f1;"AX102":f0->"AX001":f1;AX102[label="<f0>|<f1>ID: AX102\n Nombre: Juan\n factoe: 0|<f2>"];
-AX141[label="<f0>|<f1>ID: AX141\n Nombre: Juan\n factoe: 0|<f2>"];
-"AX201":f0->"AX141":f1;AX201[label="<f0>|<f1>ID: AX201\n Nombre: Juan\n factoe: -1|<f2>"];
-"AX102":f2->"AX201":f1;
+"AX001":f2->"AX101":f1;"AX141":f0->"AX001":f1;AX141[label="<f0>|<f1>ID: AX141\n Nombre: Juan\n factoe: -1|<f2>"];
+AX201[label="<f0>|<f1>ID: AX201\n Nombre: Juan\n factoe: 0|<f2>"];
+"AX141":f2->"AX201":f1;
 	}
 
 }

@@ -27,6 +27,9 @@ public class EstP2 {
         av.Agregar("AX102", "Juan");
         av.Agregar("AX141", "Juan");
         av.recorridoIn(av.raiz);
+        av.Eliminar("AX102");
+        System.out.println(" ");
+        av.recorridoIn(av.raiz);
         av.hacerGra();
     }
     
