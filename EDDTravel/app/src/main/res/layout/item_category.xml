@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_light">
+
+    <TextView
+        android:id="@+id/txt_ruta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_trayecto"
+        android:text="Trayecto" />
+
+    <TextView
+        android:id="@+id/txt_trayecto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="Ruta"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#78aee3"
+        android:textSize="21sp" />
+
+    <TextView
+        android:id="@+id/txt_costo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_ruta"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="0dp"
+        android:text="Costo" />
+
+    <TextView
+        android:id="@+id/txt_tiempo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_ruta"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="203dp"
+        android:layout_marginTop="0dp"
+        android:text="Tiempo" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_ruta"
+        android:layout_alignParentStart="true"
+        android:text="Costo:"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_ruta"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="138dp"
+        android:text="Tiempo:"
+        android:textStyle="bold" />
+
+</RelativeLayout>

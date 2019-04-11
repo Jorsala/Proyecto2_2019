@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/avion"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/txt_nom"
+        android:layout_width="299dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginBottom="34dp"
+        android:background="#cad1d7"
+        android:ems="10"
+        android:hint="Usuario"
+        android:inputType="textPersonName"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/txt_pass"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/txt_pass"
+        android:layout_width="295dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginEnd="46dp"
+        android:layout_marginBottom="56dp"
+        android:background="#cad1d7"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/btn_login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_login"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="67dp"
+        android:layout_marginEnd="59dp"
+        android:layout_marginBottom="81dp"
+        android:background="@drawable/borde_redondo"
+        android:text="Login"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="122dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="122dp"
+        android:layout_marginBottom="266dp"
+        android:fontFamily="@font/holtwood_one_sc"
+        android:text="EDDTRAVEL"
+        android:textSize="40sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toTopOf="@+id/txt_nom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</android.support.constraint.ConstraintLayout>
